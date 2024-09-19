@@ -47,6 +47,6 @@ services:
       - GF_AUTH_GENERIC_OAUTH_API_URL=http://keycloak:8080/realms/miniblog-realm/protocol/openid-connect/userinfo
       - GF_AUTH_SIGNOUT_REDIRECT_URL=http://localhost:8080/realms/miniblog-realm/protocol/openid-connect/logout?client_id=grafana-client&post_logout_redirect_uri=http://localhost:3000/login
       - GF_AUTH_OAUTH_AUTO_LOGOUT=true
-      - GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH=contains(realm_access.roles[*], 'develop') && 'Editor' || 'Viewer'
+      - GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH=contains(realm_access.roles[*], 'admin') && 'Admin' || (contains(realm_access.roles[*], 'develop') && 'Editor' || 'Viewer')
     depends_on:
       - keycloak
